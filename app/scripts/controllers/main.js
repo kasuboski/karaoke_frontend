@@ -8,21 +8,34 @@
  * Controller of the karaokeWebsiteApp
  */
 angular.module('karaokeWebsiteApp')
-  .controller('MainCtrl', function () {
-    this.songs = [
-      { 
-        title: 'ZAll About That Bass', 
-        artist: 'Meghan Trainor', 
-        track: 19586, 
-        name: 'Trainor, Meghan - All About That Bass - 19586'
-      },
-      {
-        title: 'Hey Soul Sister', 
-        artist: 'Train', 
-        track: 19585, 
-        name: 'Train - Hey Soul Sister - 19585'
-      }
-    ];
+  .controller('MainCtrl', ['Song', function (Song) {
+    var ctrl = this;
+
+    this.songs = [];
+
+    Song.getSongsWithLimit(1000).query().then(function(result) { 
+      ctrl.songs = result;
+    });
 
     this.displayedSongs = [].concat(this.songs);
-  });
+  }])
+  .factory('Song', ['railsResourceFactory', function (railsResourceFactory) {
+    function getAllSongs() {
+      return railsResourceFactory({
+        url: '/api/songs',
+        name: 'song'
+      });
+    }
+
+    function getSongsWithLimit(limit) {
+      return railsResourceFactory({
+        url: '/api/songs?limit=' + limit,
+        name: 'song'
+      });
+    }
+
+    return {
+      getAllSongs: getAllSongs,
+      getSongsWithLimit: getSongsWithLimit
+    };
+  }]);
