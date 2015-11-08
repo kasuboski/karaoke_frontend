@@ -1,0 +1,22 @@
+<div class="container">
+  <h2>My songs</h2>
+  <table st-table="main.displayedSongs" st-safe-src="main.songs" class="table table-striped">
+    <thead>
+      <tr>
+        <th st-sort="title">title</th>
+        <th st-sort="artist">artist</th>
+        <th st-sort="track">track</th>
+      </tr>
+      <tr>
+        <th colspan="5"><input st-search="" class="form-control" placeholder="global search ..." type="text"/></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr ng-repeat="row in main.displayedSongs">
+        <td>{{row.title}}</td>
+        <td>{{row.artist}}</td>
+        <td>{{row.track}}</td>
+      </tr>
+    </tbody>
+</table>
+</div>
