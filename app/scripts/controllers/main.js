@@ -27,7 +27,7 @@ angular.module('karaokeWebsiteApp')
   .factory('Song', ['railsResourceFactory', function (railsResourceFactory) {
     function getAllSongs() {
       return railsResourceFactory({
-        url: '/api/songs',
+        url: 'https://karaoke-backend.herokuapp.com/api/songs',
         name: 'song'
       });
     }

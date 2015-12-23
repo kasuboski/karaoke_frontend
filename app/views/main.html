@@ -12,7 +12,7 @@
         <th colspan="5"><input st-search="" class="form-control" placeholder="global search ..." type="text"/></th>
       </tr>
     </thead>
-    <tbody vs-repeat vs-scroll-parent=".table-container">
+    <tbody vs-repeat vs-scroll-parent="window">
         <tr ng-repeat="row in main.displayedSongs">
           <td>{{row.title}}</td>
           <td>{{row.artist}}</td>
