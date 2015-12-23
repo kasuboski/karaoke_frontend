@@ -11,7 +11,8 @@
     "angular-sanitize": "^1.4.0",
     "angular-touch": "^1.4.0",
     "angular-smart-table": "~2.1.4",
-    "angularjs-rails-resource": "~2.0.0"
+    "angularjs-rails-resource": "~2.0.0",
+    "angular-vs-repeat": "~1.0.1-beta"
   },
   "devDependencies": {
     "angular-mocks": "^1.4.0"

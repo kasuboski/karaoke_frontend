@@ -11,10 +11,15 @@ angular.module('karaokeWebsiteApp')
   .controller('MainCtrl', ['Song', function (Song) {
     var ctrl = this;
 
+    this.isLoading = true;
+
+    this.itemsByPage = 20;
+
     this.songs = [];
 
-    Song.getSongsWithLimit(1000).query().then(function(result) { 
+    Song.getAllSongs().query().then(function(result) { 
       ctrl.songs = result;
+      ctrl.isLoading = false;
     });
 
     this.displayedSongs = [].concat(this.songs);
